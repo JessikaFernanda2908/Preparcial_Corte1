@@ -10,7 +10,10 @@ public class Usuario {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column (name = "nombre")
     private String username;
+    
+    @Column (name = "contrasena")
     private String password;
 
     @ManyToOne

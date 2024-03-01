@@ -1,5 +1,7 @@
 package com.preparcial.models;
 
+import java.util.List;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -10,12 +12,17 @@ public class Rol {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "nombre")
     private String nombre;
+    
+    @OneToMany(mappedBy = "rol")
+    private List<Usuario> usuarios;
 
-	public Rol(Long id, String nombre) {
+	public Rol(Long id, String nombre, List<Usuario> usuarios) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
+		this.usuarios = usuarios;
 	}
 
 	public Rol() {
@@ -38,6 +45,15 @@ public class Rol {
 		this.nombre = nombre;
 	}
 
+	public List<Usuario> getUsuarios() {
+		return usuarios;
+	}
+
+	public void setUsuarios(List<Usuario> usuarios) {
+		this.usuarios = usuarios;
+	}
+
+    
     
 
 }
